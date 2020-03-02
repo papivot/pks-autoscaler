@@ -19,7 +19,13 @@ sudo apt-get -y install python-pip
 sudo -H pip install yq
 
 if command -v pks >/dev/null 2>&1 ; then
-  	echo "PKS CLI installed. Skipping..."
+  	echo "PKS CLI installed. Proceeding..."
+	echo "Setting up cron job..."
+	sudo systemctl start cron
+	if [[ $(sudo crontab -l | egrep -v "^(#|$)" | grep -q 'pks-autoscaler-scheduler.sh'; echo $?) == 1 ]]
+	then
+    		echo $(sudo crontab -l ; echo '*/2 * * * * /home/ubuntu/pks-autoscaler/pks-autoscaler-scheduler.sh') | sudo crontab -
+	fi
 else
 	echo "ERROR!!!!"
   	echo "PKS CLI not found. Please download the latest binary locally from PIVNET, set the permissions to execute, and move it to /usr/local/bin"
