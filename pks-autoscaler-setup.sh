@@ -42,8 +42,8 @@ if [[ ${RUN_SCHEDULED} -eq 1 ]]
 then
 	echo "Setting up cron job..."
 	sudo systemctl start cron
-	if [[ $(sudo crontab -l | egrep -v "^(#|$)" | grep -q 'pks-autoscaler-scheduler.sh'; echo $?) == 1 ]]
+	if [[ $(sudo crontab -l 2>/dev/null | egrep -v "^(#|$)" | grep -q 'pks-autoscaler-scheduler.sh'; echo $?) == 1 ]]
 	then
-		echo $(sudo crontab -l ; echo "*/${SCRIPT_FREQ_MIN} * * * * /home/ubuntu/pks-autoscaler/pks-autoscaler-scheduler.sh") | sudo crontab -
+		sudo crontab -l 2>/dev/null; echo "*/${SCRIPT_FREQ_MIN} * * * * /home/ubuntu/pks-autoscaler/pks-autoscaler-scheduler.sh" | sudo crontab -
 	fi
 fi
