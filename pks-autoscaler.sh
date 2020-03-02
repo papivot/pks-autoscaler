@@ -1,7 +1,7 @@
 #!/bin/bash
 
-OM_USERNAME="pivotalcf"
-OM_PASSWORD="bge5ty9ldy27151j"
+OM_USERNAME="om_user"
+OM_PASSWORD="om_password"
 OM_TARGET="localhost"
 PKS_USERNAME="admin"
 
