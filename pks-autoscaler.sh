@@ -23,7 +23,6 @@ calcavg()
 	echo $avg
 }
 
-
 while true
 do
   if [[ -f pks_resizer.config ]]
