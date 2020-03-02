@@ -1,5 +1,7 @@
 # PKS Autoscaler
 
+**NOT FOR PRODUCTION USE**
+
 This project implements a workflow, within the OpsManager enviornment, to autoscale K8s clusters that have been deployed using Pivotal COntainer Services (PKS). The workflow relies on the BOSH's abvility to capture compute level statistics of the worker VMs, that constitue the worker nodes for the K8s clusters. 
 
 ## Features

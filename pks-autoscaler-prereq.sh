@@ -20,6 +20,16 @@ sudo -H pip install yq
 
 if command -v pks >/dev/null 2>&1 ; then
   	echo "PKS CLI installed. Proceeding..."
+
+  	read -p  "Provide Opsman username, that will be used to execute this script: " name
+	read -s -p "Enter password for ${name}: " password
+	echo
+	echo "Updating scripts with provided credentials..."
+	sed -i "s/om_user/${name}/" pks-autoscaler.sh
+	sed -i "s/om_user/${name}/" pks-autoscaler-scheduler.sh
+	sed -i "s/om_password/${password}/" pks-autoscaler.sh
+	sed -i "s/om_password/${password}/" pks-autoscaler-scheduler.sh
+
 	echo "Setting up cron job..."
 	sudo systemctl start cron
 	if [[ $(sudo crontab -l | egrep -v "^(#|$)" | grep -q 'pks-autoscaler-scheduler.sh'; echo $?) == 1 ]]
