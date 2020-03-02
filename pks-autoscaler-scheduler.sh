@@ -1,5 +1,6 @@
 #!/bin/bash
 export PATH=/usr/local/bin/:$PATH
+cd "$(dirname "$0")";
 
 OM_USERNAME="om_user"
 OM_PASSWORD="om_password"

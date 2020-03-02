@@ -10,6 +10,13 @@ BOSH_PKS_DEPLOYMENT=""
 BOSH_PKS_CLUSTERS=""
 TEMPFILE=`mktemp`
 
+if [[ -f pks-autoscaler.config ]]
+  	then
+	  source pks-autoscaler.config
+  	else
+	  exit 1
+fi
+
 calcavg()
 {
 	count="0"
@@ -22,6 +29,12 @@ calcavg()
 	avg=`echo "scale=2; ($sum)/($count)" |bc`
 	echo $avg
 }
+
+if [[ ${RUN_SCHEDULED} -eq 1 ]]
+then
+	echo "The script is set to run as a cron job. Cannot proceed..."
+	exit 1
+fi
 
 while true
 do
