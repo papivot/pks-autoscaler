@@ -28,7 +28,7 @@ while true
 do
   if [[ -f pks_resizer.config ]]
   then
-	  source pks_resizer.config
+	  source pks-autoscaler.config
   else
 	  exit 1
   fi
