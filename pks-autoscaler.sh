@@ -25,7 +25,7 @@ calcavg()
 
 while true
 do
-  if [[ -f pks_resizer.config ]]
+  if [[ -f pks-autoscaler.config ]]
   then
 	  source pks-autoscaler.config
   else
