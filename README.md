@@ -28,6 +28,8 @@ This project implements a workflow, within the OpsManager enviornment, to autosc
 
 * Clone this repo.
 * Modify the `pks-autoscaler.config` file.
+* Modify the values of following entries in the script 
+`OM_USERNAME="om_user"` and `OM_PASSWORD="om_password"`. The value should corrospond to the info of the login id execuiting the script. 
 * Run the `pks-autoscaler-preq.sh` script to setup required binaries. 
 * Make sure `pks` cli is installed.
 * Schedule the `pks-autoscaler-schduler.sh` or execute the `pks-autoscaler.sh` and enjoy!!!
